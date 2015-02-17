@@ -19,11 +19,32 @@
 		<http-basic />
 		<logout> 이 자동설정됨을 의미한다.
 		
-		intercept-url의 순서는 중요하다. (구체적인 것을 먼저 명시) 
+		intercept-url의 순서는 중요하다. (구체적인 것을 먼저 명시)
+		
+		//Custom Tag name
+		username-parameter, password-parameter
+		
+		//Request Login URL
+		login-page="/login"
+		
+		//Success Login and Redirect Default URL
+		//만약 권한이 필요한 페이지를 클릭했는데, 로그인이 되지 않아서 요청을 받았다면
+		//인증성공 후 이전에 요청했던 URL로 이동한다.
+		//default-target-url은 그런것들이 지정되어 있지 않을 경우, 즉 사용자가 로그인창을 요청했을 경우를 의미한다
+		default-target-url="/main"
 	-->
 	<http auto-config="true">
 		<intercept-url pattern="/admin/**" access="ROLE_ADMIN" />
-		<intercept-url pattern="/**" access="ROLE_USER" />
+		<intercept-url pattern="/login" access="ROLE_ANONYMOUS"/>
+		<intercept-url pattern="/main" access="ROLE_ANONYMOUS, ROLE_USER, ROLE_ADMIN"/>
+		<intercept-url pattern="/**" access="ROLE_ANONYMOUS, ROLE_USER, ROLE_ADMIN" />
+		<form-login
+			username-parameter="loginId"
+			password-parameter="loginPw"
+			login-page="/login"
+			default-target-url="/main"
+			authentication-failure-url="/login?failure=true"
+		/>
 	</http>
 
 	<authentication-manager>
