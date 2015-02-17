@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+	xmlns:beans="http://www.springframework.org/schema/beans" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans.xsd 
+	http://www.springframework.org/schema/security 
+	http://www.springframework.org/schema/security/spring-security.xsd">
+
+	<!-- 확장자를 이용해 패턴을 걸때는 /**/*.확장자 로 할 것 (Ant Pattern 규칙) -->
+	<http pattern="/**/*.js" security="none" />
+	<http pattern="/**/*.css" security="none" />
+	<http pattern="/images/*" security="none" />
+
+
+	<!-- 
+		auto-config="true" 설정은
+		<form-login />
+		<http-basic />
+		<logout> 이 자동설정됨을 의미한다.
+		
+		intercept-url의 순서는 중요하다. (구체적인 것을 먼저 명시) 
+	-->
+	<http auto-config="true">
+		<intercept-url pattern="/admin/**" access="ROLE_ADMIN" />
+		<intercept-url pattern="/**" access="ROLE_USER" />
+	</http>
+
+	<authentication-manager>
+		<authentication-provider>
+		
+			<!-- 
+				여기서 name은 principal을 의미한다
+			 --> 
+			<user-service>
+				<user name="user1" password="user1!" authorities="ROLE_USER" />
+				<user name="admin1" password="admin1!" authorities="ROLE_ADMIN" />
+			</user-service>
+		</authentication-provider>
+	</authentication-manager>
+
+</beans:beans>
