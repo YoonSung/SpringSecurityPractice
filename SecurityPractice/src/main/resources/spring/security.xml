@@ -33,10 +33,10 @@
 		//default-target-url은 그런것들이 지정되어 있지 않을 경우, 즉 사용자가 로그인창을 요청했을 경우를 의미한다
 		default-target-url="/main"
 	-->
-	<http auto-config="true">
+	<http auto-config="true" use-expressions="true">
 		<intercept-url pattern="/admin/**" access="hasRole( 'ROLE_ADMIN' ) " />
 		<intercept-url pattern="/login" access="isAnonymous()"/>
-		<intercept-url pattern="/main" access="permitAll"/>
+		<intercept-url pattern="/main" access="hasAnyRole( 'ROLE_USER', 'ROLE_ADMIN' )"/>
 		<intercept-url pattern="/**" access="permitAll" />
 		<form-login
 			username-parameter="loginId"
