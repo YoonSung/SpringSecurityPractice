@@ -34,10 +34,10 @@
 		default-target-url="/main"
 	-->
 	<http auto-config="true">
-		<intercept-url pattern="/admin/**" access="ROLE_ADMIN" />
-		<intercept-url pattern="/login" access="ROLE_ANONYMOUS"/>
-		<intercept-url pattern="/main" access="ROLE_ANONYMOUS, ROLE_USER, ROLE_ADMIN"/>
-		<intercept-url pattern="/**" access="ROLE_ANONYMOUS, ROLE_USER, ROLE_ADMIN" />
+		<intercept-url pattern="/admin/**" access="hasRole( 'ROLE_ADMIN' ) " />
+		<intercept-url pattern="/login" access="isAnonymous()"/>
+		<intercept-url pattern="/main" access="permitAll"/>
+		<intercept-url pattern="/**" access="permitAll" />
 		<form-login
 			username-parameter="loginId"
 			password-parameter="loginPw"
