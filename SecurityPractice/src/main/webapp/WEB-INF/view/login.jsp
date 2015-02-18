@@ -32,14 +32,14 @@
 			<tr>
 				<td style="width:50px;">id</td>
 				<td style="width: 150px;">
-					<input style="width:145px;" type="text" id="loginId" name="loginId" value="" />
+					<input style="width:145px;" type="text" id="loginId" name="loginId" value="${loginId}" />
 				</td>
 			</tr>
 			
 			<tr>
 				<td>pwd</td>
 				<td>
-					<input style="width: 145px;" type="text" id="loginPw" name="loginPw" value=""/>
+					<input style="width: 145px;" type="text" id="loginPw" name="loginPw" value="${loginPw}"/>
 				</td>
 			</tr>
 			
@@ -49,12 +49,11 @@
 				</td>
 			</tr>
 			
-			<c:if test="${not empty param.failure}">
+			<c:if test="${not empty SECURITY_AUTHENTICATION_EXCEPTION}">
 			<tr>
 				<td colspan="2" style="color:red;">
 					<p>Your login attempt was not successful, try again. </p>
-					<p>Reason : ${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message}</p>
-					<c:remove scope="session" var="SPRING_SECURITY_LAST_EXCEPTION" />
+					<p>Reason : ${SECURITY_AUTHENTICATION_EXCEPTION}</p>
 			</tr>
 			</c:if>
 		</table>

@@ -43,8 +43,8 @@
 			password-parameter="loginPw"
 			login-page="/login"
 			default-target-url="/main"
-			authentication-failure-url="/login?failure=true"
 			authentication-success-handler-ref="authenticationHandler"
+			authentication-failure-handler-ref="authenticationHandler"
 		/>
 		
 		<logout
@@ -66,6 +66,9 @@
 		<beans:property name="enableGroups" value="false" />
 	</beans:bean>
 
-	<beans:bean id="authenticationHandler" class="support.AuthenticationHandler" />
+	<beans:bean id="authenticationHandler" class="support.AuthenticationHandler" >
+		<beans:property name="defaultFailureUrl" value="/login?fail=true" />
+		<beans:property name="exceptionMessageKey" value="SECURITY_AUTHENTICATION_EXCEPTION" />
+	</beans:bean>
 	
 </beans:beans>

@@ -18,6 +18,11 @@ public class MemberInfo implements UserDetails {
 
 	private static final long serialVersionUID = 8038974744490492054L;
 
+	@Override
+	public String toString() {
+		return "MemberInfo [id=" + id + ", name=" + name + ", authorities=" + authorities + "]";
+	}
+
 	/**
 	 * Make by Programmer Start
 	 */
