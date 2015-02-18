@@ -44,6 +44,7 @@
 			login-page="/login"
 			default-target-url="/main"
 			authentication-failure-url="/login?failure=true"
+			authentication-success-handler-ref="authenticationHandler"
 		/>
 		
 		<logout
@@ -64,5 +65,7 @@
 		<beans:property name="authoritiesByUsernameQuery" value="SELECT role FROM tbl_member_role WHERE id = ?" />
 		<beans:property name="enableGroups" value="false" />
 	</beans:bean>
+
+	<beans:bean id="authenticationHandler" class="support.AuthenticationHandler" />
 	
 </beans:beans>
