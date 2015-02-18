@@ -9,6 +9,9 @@
          <context:component-scan
             base-package="org.springframework.samples.service"/>  -->
 	
+	<!-- 
+		http://www.javajigi.net/pages/viewpage.action?pageId=2468
+	 -->
 	<bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
 		<property name="basenames">
 			<list>
