@@ -70,7 +70,7 @@ public class MemberInfo implements UserDetails {
 		this.password = password;
 	}
 	
-	public void setAuthorities(Set<GrantedAuthority> authorities) {
+	public void setAuthorities(Collection<? extends GrantedAuthority> authorities) {
 		this.authorities = Collections.unmodifiableSet(sortAuthorities(authorities));
 	}
 	
