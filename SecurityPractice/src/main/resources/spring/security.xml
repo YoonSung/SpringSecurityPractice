@@ -45,6 +45,12 @@
 			default-target-url="/main"
 			authentication-failure-url="/login?failure=true"
 		/>
+		
+		<logout
+			logout-url="/logout"
+			logout-success-url="/main"
+			delete-cookies="JSESSIONID"
+		/>
 	</http>
 
 	<authentication-manager>

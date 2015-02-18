@@ -28,7 +28,7 @@ if (principal != null && principal instanceof MemberInfo) {
 	<h3>Main Page</h3>
 	<sec:authorize access="isAuthenticated()">
 		<%=name%>님 반갑습니다
-		<a href="${ctx}/j_spring_security_logout">로그아웃</a>
+		<a href="${ctx}/logout">로그아웃</a>
 	</sec:authorize>
 	
 	<ul>
