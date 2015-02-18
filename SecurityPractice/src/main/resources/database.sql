@@ -22,6 +22,12 @@ CREATE TABLE IF NOT EXISTS tbl_member_authority (
 	FOREIGN KEY (authority) REFERENCES tbl_authority(authority)
 );
 
+CREATE TABLE IF NOT EXISTS tbl_member_role (
+	id VARCHAR(50),
+	role VARCHAR(50),
+	FOREIGN KEY (id) REFERENCES tbl_member (id)
+);
+
 CREATE TABLE IF NOT EXISTS tbl_group (
 	id INT,
 	group_name VARCHAR(50),
@@ -60,3 +66,4 @@ CREATE TABLE IF NOT EXISTS tbl_secured_resource_authority (
 );
 
 INSERT INTO tbl_member VALUES("test", "testest", "yoonsung");
+INSERT INTO tbl_member_role VALUES("test", "admin");

@@ -34,9 +34,9 @@
 		default-target-url="/main"
 	-->
 	<http auto-config="true" use-expressions="true">
-		<intercept-url pattern="/admin/**" access="hasRole( 'ROLE_ADMIN' ) " />
+		<intercept-url pattern="/admin/**" access="hasRole( 'admin' ) " />
 		<intercept-url pattern="/login" access="isAnonymous()"/>
-		<intercept-url pattern="/main" access="hasAnyRole( 'ROLE_USER', 'ROLE_ADMIN' )"/>
+		<intercept-url pattern="/main" access="hasAnyRole( 'user', 'admin' )"/>
 		<intercept-url pattern="/**" access="permitAll" />
 		<form-login
 			username-parameter="loginId"
@@ -55,7 +55,7 @@
 		<beans:property name="dataSource" ref="dataSource"/>
 		<beans:property name="rolePrefix" value=""/>
 		<beans:property name="usersByUsernameQuery" value="SELECT id, password, name FROM tbl_member WHERE id=?"/>
-		<beans:property name="authoritiesByUsernameQuery" value="SELECT role_id FROM member_role WHERE id = ?" />
+		<beans:property name="authoritiesByUsernameQuery" value="SELECT role FROM tbl_member_role WHERE id = ?" />
 		<beans:property name="enableGroups" value="false" />
 	</beans:bean>
 	
